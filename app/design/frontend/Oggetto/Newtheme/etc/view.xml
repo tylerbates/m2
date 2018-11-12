@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <vars module="Magento_Catalog">
+        <!-- Gallery and magnifier theme settings. Start -->
+        <var name="gallery">
+            <var name="transition">
+                <var name="effect">dissolve</var> <!-- Sets transition effect for slides changing (slide/crossfade/dissolve) -->
+                <var name="duration">1500</var> <!-- Sets transition duration in ms -->
+            </var>
+        </var>
+    </vars>
+    <media>
+        <images module="Magento_Catalog">
+            <image id="mini_cart_product_thumbnail" type="thumbnail">
+                <width>100</width>
+                <height>100</height>
+            </image>
+        </images>
+    </media>
+</view>
