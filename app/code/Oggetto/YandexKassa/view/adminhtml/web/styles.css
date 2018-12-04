@@ -1,0 +1,18 @@
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.yandex-kassa .heading {
+    background: url("https://brandpresent.ru/netcat_files/userfiles/shop/pay/logo-ya2.svg") no-repeat 0 50% / 18rem auto;
+    padding-left: 20rem;
+    height: 4em;
+}
+.yandex-kassa .heading strong {
+    padding-top: 0.7em;
+    font-size: 1.5em!important;
+}
+.yandex-kassa .button-container {
+    float: right;
+    margin-top: 1rem!important;
+}

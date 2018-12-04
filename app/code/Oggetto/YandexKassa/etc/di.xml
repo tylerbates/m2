@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="YandexKassaCcUiConfigProvider" type="Oggetto\YandexKassa\Model\Ui\ConfigProvider">
+        <arguments>
+            <argument name="config" xsi:type="object">YandexKassaCcConfig</argument>
+            <argument name="code" xsi:type="const">Oggetto\YandexKassa\Model\Ui\ConfigProvider::CODE_CC</argument>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCcConfig" type="Oggetto\YandexKassa\Gateway\Config\Config">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Oggetto\YandexKassa\Model\Ui\ConfigProvider::CODE_CC</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCcMethodAdapter" type="Magento\Payment\Model\Method\Adapter">
+        <arguments>
+            <argument name="code" xsi:type="const">Oggetto\YandexKassa\Model\Ui\ConfigProvider::CODE_CC</argument>
+            <argument name="formBlockType" xsi:type="string">\Magento\Payment\Block\Form\Cc</argument>
+            <argument name="infoBlockType" xsi:type="string">\Magento\Payment\Block\Info</argument>
+            <argument name="valueHandlerPool" xsi:type="object">YandexKassaCCValueHandlerPool</argument>
+            <argument name="validatorPool" xsi:type="object">Magento\Payment\Gateway\Validator\ValidatorPool</argument>
+            <argument name="commandPool" xsi:type="object">YandexKassaCCCommandPool</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCValueHandlerPool" type="Magento\Payment\Gateway\Config\ValueHandlerPool">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="default" xsi:type="string">YandexKassaCCConfigValueHandler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCConfigValueHandler" type="Magento\Payment\Gateway\Config\ConfigValueHandler">
+        <arguments>
+            <argument name="configInterface" xsi:type="object">YandexKassaCcConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCCommandPool" type="Magento\Payment\Gateway\Command\CommandPool">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="authorize" xsi:type="string">YandexKassaCCAuthorizeCommand</item>
+                <item name="capture" xsi:type="string">YandexKassaCCCaptureCommand</item>
+                <item name="refund" xsi:type="string">YandexKassaCCRefundCommand</item>
+                <item name="void" xsi:type="string">YandexKassaCCRefundCommand</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCAuthorizeCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="client" xsi:type="object">Oggetto\YandexKassa\Gateway\Http\Client\Authorize</argument>
+            <argument name="requestBuilder" xsi:type="object">YandexKassaCcFormBuilder</argument>
+            <argument name="transferFactory" xsi:type="object">YandexKassaCcTransferFactory</argument>
+            <argument name="handler" xsi:type="object">Oggetto\YandexKassa\Gateway\Response\Handler\Authorize</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCCaptureCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="client" xsi:type="object">Oggetto\YandexKassa\Gateway\Http\Client\Capture</argument>
+            <argument name="requestBuilder" xsi:type="object">YandexKassaCcCaptureRefundDataBuilder</argument>
+            <argument name="transferFactory" xsi:type="object">YandexKassaCcTransferFactory</argument>
+            <argument name="handler" xsi:type="object">Oggetto\YandexKassa\Gateway\Response\Handler\Capture</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCCRefundCommand" type="Magento\Payment\Gateway\Command\GatewayCommand">
+        <arguments>
+            <argument name="client" xsi:type="object">Oggetto\YandexKassa\Gateway\Http\Client\Refund</argument>
+            <argument name="requestBuilder" xsi:type="object">YandexKassaCcCaptureRefundDataBuilder</argument>
+            <argument name="transferFactory" xsi:type="object">YandexKassaCcTransferFactory</argument>
+            <argument name="handler" xsi:type="object">Oggetto\YandexKassa\Gateway\Response\Handler\Refund</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCcFormBuilder" type="Oggetto\YandexKassa\Gateway\Request\Builder\PaymentForm">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+            <argument name="config" xsi:type="object">YandexKassaCcConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCcCaptureRefundDataBuilder" type="Oggetto\YandexKassa\Gateway\Request\Builder\CaptureRefund">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+            <argument name="config" xsi:type="object">YandexKassaCcConfig</argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="YandexKassaCcTransferFactory" type="Oggetto\YandexKassa\Gateway\Http\TransferFactory">
+        <arguments>
+            <argument name="config" xsi:type="object">YandexKassaCcConfig</argument>
+        </arguments>
+    </virtualType>
+</config>

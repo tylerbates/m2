@@ -1,0 +1,28 @@
+{
+  "name": "oggetto/cloud-payments",
+  "description": "Oggetto Yandex Kassa",
+  "require": {
+    "magento/framework": "~100.1.*",
+    "yandex-money/yandex-checkout-sdk-php": "*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": [
+    "proprietary"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Oggetto\\YandexKassa\\": ""
+    }
+  },
+  "authors": [
+    {
+      "name": "Angrew",
+      "email": "abugaev@oggettoweb.com",
+      "homepage": "http://oggettoweb.com"
+    }
+  ]
+}
