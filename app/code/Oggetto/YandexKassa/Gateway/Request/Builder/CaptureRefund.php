@@ -17,7 +17,7 @@ class CaptureRefund extends AbstractBuilder
                 'value' =>  sprintf('%.2F', SubjectReader::readAmount($buildSubject)),
                 'currency' => $paymentObject->getOrder()->getCurrencyCode()
             ],
-            'payment_id' => $payment->getAuthorizationTransaction()->getTxnId()
+            'payment_id' => $payment->getCcTransId()
         ];
 
         return $result;

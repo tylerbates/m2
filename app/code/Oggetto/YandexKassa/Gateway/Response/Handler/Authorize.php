@@ -14,7 +14,9 @@ class Authorize implements HandlerInterface
         if (isset($response['id'])) {
             /** @var Payment $payment */
             $payment = $paymentDataObject->getPayment();
-            $payment->setTransactionId($response['id'])
+            $payment
+                ->setCcTransId($response['id'])
+                ->setTransactionId($response['id'])
                 ->setIsTransactionPending(true);
         }
         if (

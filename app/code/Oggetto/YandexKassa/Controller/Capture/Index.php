@@ -10,6 +10,7 @@ use Magento\Framework\Webapi\Exception;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Json\Helper\Data;
 use Magento\Sales\Model\Order\Payment\Transaction;
+use Magento\Sales\Model\OrderRepository;
 use YandexCheckout\Model\NotificationEventType;
 use YandexCheckout\Model\Notification\NotificationWaitingForCapture;
 use Magento\Sales\Model\Order;
@@ -18,18 +19,21 @@ class Index extends Action
 {
     protected $jsonResultFactory;
     protected $orderFactory;
+    protected $orderRepository;
     protected $jsonHelper;
 
     public function __construct(
         Context $context,
         JsonFactory $jsonResultFactory,
         OrderFactory $orderFactory,
+        OrderRepository $orderRepository,
         Data $jsonHelper
     )
     {
         $this->jsonHelper = $jsonHelper;
         $this->jsonResultFactory = $jsonResultFactory;
         $this->orderFactory = $orderFactory;
+        $this->orderRepository = $orderRepository;
         parent::__construct($context);
     }
 
@@ -59,6 +63,7 @@ class Index extends Action
                 }
 
                 $order->getPayment()->capture();
+                $this->orderRepository->save($order);
             }
         } catch(Exception $e) {
             $result->setData(['error' => $e->getMessage()]);
