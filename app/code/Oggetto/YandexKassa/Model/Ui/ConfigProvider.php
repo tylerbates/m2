@@ -12,6 +12,7 @@ class ConfigProvider implements ConfigProviderInterface
     const CODE_YM = 'yandex_kassa_ym';
     const PAYMENT_TOKEN_FIELD = 'payment_token';
     const CONFIRM_URL_FIELD = 'confirmation_url';
+    const PAYMENT_ID_FIELD = 'payment_id';
 
     /** @var ConfigInterface */
     protected $config;

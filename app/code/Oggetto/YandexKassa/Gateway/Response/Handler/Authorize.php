@@ -11,11 +11,11 @@ class Authorize implements HandlerInterface
     public function handle(array $handlingSubject, array $response)
     {
         $paymentDataObject = SubjectReader::readPayment($handlingSubject);
+        /** @var Payment $payment */
+        $payment = $paymentDataObject->getPayment();
         if (isset($response['id'])) {
-            /** @var Payment $payment */
-            $payment = $paymentDataObject->getPayment();
             $payment
-                ->setCcTransId($response['id'])
+                ->setAdditionalInformation(ConfigProvider::PAYMENT_ID_FIELD, $response['id'])
                 ->setTransactionId($response['id'])
                 ->setIsTransactionPending(true);
         }
@@ -23,7 +23,7 @@ class Authorize implements HandlerInterface
             isset($response['confirmation']) &&
             ($confirmUrl = $response['confirmation'][ConfigProvider::CONFIRM_URL_FIELD])
         ) {
-            $paymentDataObject->getPayment()->setAdditionalInformation(
+            $payment->setAdditionalInformation(
                 ConfigProvider::CONFIRM_URL_FIELD,
                 $confirmUrl
             );
