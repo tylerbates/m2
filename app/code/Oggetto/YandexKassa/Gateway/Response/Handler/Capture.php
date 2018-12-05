@@ -1,11 +1,12 @@
 <?php
 namespace Oggetto\YandexKassa\Gateway\Response\Handler;
 
+use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Magento\Sales\Model\Order;
 use YandexCheckout\Model\PaymentStatus;
 
-class Capture extends AbstractHandler
+class Capture implements HandlerInterface
 {
     public function handle(array $handlingSubject, array $response)
     {

@@ -1,11 +1,12 @@
 <?php
 namespace Oggetto\YandexKassa\Gateway\Response\Handler;
 
+use Magento\Payment\Gateway\Response\HandlerInterface;
 use Magento\Payment\Gateway\Helper\SubjectReader;
 use Oggetto\YandexKassa\Model\Ui\ConfigProvider;
 use Magento\Sales\Model\Order\Payment;
 
-class Authorize extends AbstractHandler
+class Authorize implements HandlerInterface
 {
     public function handle(array $handlingSubject, array $response)
     {
