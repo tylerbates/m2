@@ -6,7 +6,12 @@
 <a href="<?= $block->escapeUrl($block->getCustomUrl()) ?>">Go to google</a>
 
 <select name="some_select">
-    <?php foreach ($viewModel->getArray() as $option => $label): ?>
-        <option value="<?= $block->escapeHtmlAttr($option) ?>"><?= $label ?></option>
+    <?php foreach ($viewModel->getArray() as $option => $data): ?>
+        <option
+            value="<?= $block->escapeHtmlAttr($option) ?>"
+            data-mage-init='{"colorizer":{color:<?= $data['color'] ?>}}'
+        >
+            <?= $data['label'] ?>
+        </option>
     <?php endforeach; ?>
 </select>
