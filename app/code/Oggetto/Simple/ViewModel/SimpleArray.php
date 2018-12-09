@@ -18,15 +18,15 @@ class SimpleArray implements ArgumentInterface
     {
         return [
             'foo' => [
-                'label' => 'Value 1',
+                'label' => __('Value 1'),
                 'color' => '#FF0000'
             ],
             'bar' => [
-                'label' => 'Value 2',
+                'label' => __('Value 2'),
                 'color' => '#00FF00'
             ],
             'baz' => [
-                'label' => 'Value 3',
+                'label' => __('Value 3'),
                 'color' => '#0000FF'
             ],
         ];
