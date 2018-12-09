@@ -1,8 +1,15 @@
-define([], function () {
+define(['jquery'], function ($) {
     'use strict';
 
+    var mixin = {
+        setColor: function(element) {
+            this._super(element);
+            element.css('border-color', this.options.color);
+        }
+    };
+
     return function (target) {
-        console.log('In mixin!');
-        return target;
+        $.widget('mage.colorizer', target, mixin);
+        return $.mage.colorizer;
     }
 });

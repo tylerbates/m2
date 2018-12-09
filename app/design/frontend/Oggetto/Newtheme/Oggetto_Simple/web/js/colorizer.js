@@ -5,7 +5,17 @@ define([
 ) {
     'use strict';
 
-    return function (config, element) {
-        $(element).css('color', config.color);
-    };
+    $.widget('mage.colorizer', {
+        options: {
+            color: '#000000'
+        },
+
+        setColor: function(element) {
+            element.css('color', this.options.color);
+        },
+
+        _create: function() {
+            this.setColor(this.element);
+        }
+    });
 });
