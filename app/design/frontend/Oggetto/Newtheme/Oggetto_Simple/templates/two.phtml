@@ -1,0 +1,30 @@
+<?php
+/** @var Oggetto\Simple\ViewModel\SimpleArray $viewModel */
+$viewModel = $block->getViewModel();
+?>
+
+<a href="<?= $block->escapeUrl($block->getCustomUrl()) ?>">Go to google</a>
+
+<select name="some_select" data-bind="options: someOptions
+                                      optionsText: 'label'
+                                      optionsValue: 'value'
+                                      value: selectedOption"></select>
+
+<div data-bind="style: {color: selectedOption().color }">
+    <span data-bind="text: selectedOption() ? selectedOption().label : 'Select smth pls'"></span>
+</div>
+
+<script type="text/x-magento-init">
+{
+    "*": {
+        "Magento_Ui/js/core/app": {
+            "components": {
+                "optionsList": {
+                    "component": "Oggetto_Simple/js/options-list",
+                    "someOptions": <?= $viewModel->getJson() ?>
+                }
+            }
+        }
+    }
+}
+</script>

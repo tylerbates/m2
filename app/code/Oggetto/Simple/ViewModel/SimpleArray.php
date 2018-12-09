@@ -3,9 +3,17 @@
 namespace Oggetto\Simple\ViewModel;
 
 use Magento\Framework\View\Element\Block\ArgumentInterface;
+use Magento\Framework\Serialize\Serializer\Json;
 
 class SimpleArray implements ArgumentInterface
 {
+    private $json;
+
+    public function __construct(Json $json)
+    {
+        $this->json = $json;
+    }
+
     public function getArray(): array
     {
         return [
@@ -22,5 +30,19 @@ class SimpleArray implements ArgumentInterface
                 'color' => '#0000FF'
             ],
         ];
+    }
+
+    public function getJson()
+    {
+        $result = [];
+        foreach ($this->getArray() as $key => $data) {
+            $result[] = [
+                'value' => $key,
+                'label' => $data['label'],
+                'color' => $data['color']
+            ];
+        }
+
+        return $this->json->serialize($result);
     }
 }
