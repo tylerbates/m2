@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="columns.top">
+            <block name="some-options" template="Oggetto_Simple:inputs.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="main-inputs-list" xsi:type="array">
+                                <item name="component" xsi:type="string">Oggetto_Simple/js/main/inputs-list</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Oggetto_Simple/main/inputs-list</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="input-name" xsi:type="array">
+                                        <item name="component" xsi:type="string">Oggetto_Simple/js/main/input</item>
+                                        <item name="displayArea" xsi:type="string">listInputs</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Oggetto_Simple/main/input</item>
+                                            <item name="name" xsi:type="string">name</item>
+                                        </item>
+                                    </item>
+                                    <item name="input-lastname" xsi:type="array">
+                                        <item name="component" xsi:type="string">Oggetto_Simple/js/main/input</item>
+                                        <item name="displayArea" xsi:type="string">listInputs</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Oggetto_Simple/main/input</item>
+                                            <item name="name" xsi:type="string">lastname</item>
+                                        </item>
+                                    </item>
+                                    <item name="input-email" xsi:type="array">
+                                        <item name="component" xsi:type="string">Oggetto_Simple/js/main/input</item>
+                                        <item name="displayArea" xsi:type="string">listInputs</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Oggetto_Simple/main/input</item>
+                                            <item name="name" xsi:type="string">email</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
