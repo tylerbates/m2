@@ -5,4 +5,32 @@
     <head>
         <css src="Magento_Theme::critical.css"/>
     </head>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block name="customer.tracker" template="Magento_Theme::customer_tracker.phtml"/>
+        </referenceContainer>
+        <referenceBlock name="minicart">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="minicart_content" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="extra_info" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="reloader" xsi:type="array">
+                                            <item name="component" xsi:type="string">Magento_Theme/js/minicart/reloader</item>
+                                            <item name="config" xsi:type="array">
+                                                <item name="template" xsi:type="string">Magento_Theme/minicart/reloader</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+
 </page>
