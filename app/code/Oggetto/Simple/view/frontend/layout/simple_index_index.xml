@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<page layout="1column"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block name="one" template="Oggetto_Simple::one.phtml">
+                <arguments>
+                    <argument name="foo" xsi:type="url" path="checkout/cart"/>
+                </arguments>
+                <block name="three" template="Oggetto_Simple::three.phtml"/>
+            </block>
+            <block name="two">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Oggetto\Simple\ViewModel\SimpleArray</argument>
+                    <argument name="template" xsi:type="string">Oggetto_Simple::two.phtml</argument>
+                    <argument name="custom_url" xsi:type="string">https://google.ru</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
