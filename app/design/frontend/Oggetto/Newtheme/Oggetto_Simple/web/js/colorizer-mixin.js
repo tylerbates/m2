@@ -1,4 +1,8 @@
-define(['jquery'], function ($) {
+define([
+    'jquery',
+    'jquery/ui'
+],
+function ($) {
     'use strict';
 
     var mixin = {
