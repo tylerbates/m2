@@ -8,5 +8,16 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="advanced-search-link" remove="true"/>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="catalog-search-advanced-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Extended Search</argument>
+                    <argument name="path" xsi:type="string">catalogsearch/advanced</argument>
+                    <argument name="attributes" xsi:type="array">
+                        <item name="data-action" xsi:type="string">advanced-search</item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
     </body>
 </page>
