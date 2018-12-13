@@ -5,14 +5,15 @@ $viewModel = $block->getViewModel();
 
 <a href="<?= $block->escapeUrl($block->getCustomUrl()) ?>">Go to google</a>
 
-<select name="some_select" data-bind="options: someOptions,
+<div data-bind="scope: 'optionsList'">
+    <select name="some_select" data-bind="options: someOptions,
                                       optionsText: 'label',
                                       optionsValue: 'value',
-                                      value: selectedOption,
-                                      scope: 'optionsList'"></select>
+                                      value: selectedOption"></select>
 
-<div data-bind="style: {color: selectedOption().color }, scope: 'optionsList'">
-    <span data-bind="text: selectedOption() ? selectedOption().label : 'Select smth pls', scope: 'optionsList'"></span>
+    <div data-bind="style: {color: selectedOption().color }">
+        <span data-bind="text: selectedOption() ? selectedOption().label : 'Select smth pls'"></span>
+    </div>
 </div>
 
 <script type="text/x-magento-init">
