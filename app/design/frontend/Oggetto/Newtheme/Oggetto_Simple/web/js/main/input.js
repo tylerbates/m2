@@ -10,7 +10,7 @@ define([
     return Component.extend({
         defaults: {
             exports: {
-                selectedValue: '${ $.parentName }:selectedValues[${ $.inputName }]'
+                selectedValue: '${ $.parentName }:${ $.inputName }'
             }
         },
 
