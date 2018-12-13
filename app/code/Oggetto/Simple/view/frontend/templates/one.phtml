@@ -1,5 +1,11 @@
 <a href="<?= $block->getFoo() ?>">Go to cart</a>
-<p>
+<p class="js-elem-to-colorize">
     <?= $block->getVar('some_var', 'Oggetto_Simple'); ?>
 </p>
 <?= $block->getChildHtml('three') ?>
+
+<script type="text/javascript">
+    require(['jquery', 'colorizer'], function($, colorize) {
+        colorize({color: 'blue'}, $('.js-elem-to-colorize'));
+    });
+</script>
