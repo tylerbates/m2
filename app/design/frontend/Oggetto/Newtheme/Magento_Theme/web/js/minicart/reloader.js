@@ -10,7 +10,6 @@ define([
     return Component.extend({
         reloadMinicart: function() {
             var sections = ['cart'];
-            customerData.invalidate(sections);
             customerData.reload(sections, true);
         }
     });
